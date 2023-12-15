@@ -1,8 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +23,24 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+              child: TextField(
+                onTapOutside: (_) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                controller: textEditingController,
+                decoration: const InputDecoration(
+                  labelText: 'Enter the text',
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
             Center(
               child: CupertinoButton(
-                padding: const EdgeInsets.fromLTRB(20,8,20,8),
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
                 color: Colors.blue,
                 onPressed: () {
                   debugPrint("Button Pressed");
