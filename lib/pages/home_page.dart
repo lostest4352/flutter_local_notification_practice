@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
             ),
             Center(
               child: CupertinoButton(
+                padding: const EdgeInsets.fromLTRB(20,8,20,8),
                 color: Colors.blue,
                 onPressed: () {
                   debugPrint("Button Pressed");
