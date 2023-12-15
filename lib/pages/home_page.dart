@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,14 +7,25 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Notification App"),
+      ),
       body: Center(
         child: Column(
           children: [
+            const SizedBox(
+              height: 25,
+            ),
             Center(
-              child: TextButton(
-                onPressed: () {},
-                child: const Text("Press here"),
+              child: CupertinoButton(
+                color: Colors.blue,
+                onPressed: () {
+                  debugPrint("Button Pressed");
+                },
+                child: const Text(
+                  "Press here",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ],
