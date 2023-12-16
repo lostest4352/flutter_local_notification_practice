@@ -20,8 +20,8 @@ class NotificationService {
         const AndroidNotificationDetails(
       "channelId",
       "channelName",
-      // importance: Importance.max,
-      // priority: Priority.max
+      importance: Importance.max,
+      priority: Priority.max
     );
     NotificationDetails notificationDetails = NotificationDetails(
       android: androidNotificationDetails,
