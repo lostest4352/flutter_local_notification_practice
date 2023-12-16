@@ -16,8 +16,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    notificationService.initialNotification();
     super.initState();
+    notificationService.initialNotification();
   }
 
   @override
