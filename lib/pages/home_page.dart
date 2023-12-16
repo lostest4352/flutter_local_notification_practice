@@ -18,7 +18,12 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     notificationService.initialNotification();
     super.initState();
+  }
 
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
   }
 
   @override
@@ -54,13 +59,16 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.blue,
                 onPressed: () {
                   debugPrint("Button Pressed");
-                  notificationService.sendNotification("Title", (){
-                    if (textEditingController.text.trim() == "") {
-                      return "No text written";
-                    } else {
-                      return textEditingController.text.trim();
-                    }
-                  }());
+                  notificationService.sendNotification(
+                    "Title",
+                    () {
+                      if (textEditingController.text.trim() == "") {
+                        return "No text written";
+                      } else {
+                        return textEditingController.text.trim();
+                      }
+                    }(),
+                  );
                 },
                 child: const Text(
                   "Send",
