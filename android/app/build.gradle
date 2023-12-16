@@ -24,7 +24,8 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.flutter_notification_app"
-    compileSdkVersion flutter.compileSdkVersion
+    // compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33 // modified here
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -52,7 +53,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true // modified here
-        compileSdkVersion 33 // modified here
+        
     }
 
     buildTypes {

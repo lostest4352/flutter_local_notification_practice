@@ -1,20 +1,37 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
-  //Singleton pattern
-  static final NotificationService _notificationService =
-      NotificationService._internal();
-  factory NotificationService() {
-    return _notificationService;
-  }
-  NotificationService._internal();
-
-  //instance of FlutterLocalNotificationsPlugin
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
+
+  //
+  final AndroidInitializationSettings androidInitializationSettings =
+      const AndroidInitializationSettings('logo');
+
+  void initialNotification() async {
+    InitializationSettings initializationSettings = InitializationSettings(
+      android: androidInitializationSettings,
+    );
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }
+
+  void sendNotification(String title, String body) async {
+    AndroidNotificationDetails androidNotificationDetails =
+        const AndroidNotificationDetails(
+      "channelId",
+      "channelName",
+      // importance: Importance.max,
+      // priority: Priority.max
+    );
+    NotificationDetails notificationDetails = NotificationDetails(
+      android: androidNotificationDetails,
+    );
+
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      title,
+      body,
+      notificationDetails,
+    );
+  }
 }
-
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-
-

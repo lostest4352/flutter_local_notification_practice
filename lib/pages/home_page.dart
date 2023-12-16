@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_notification_app/services/notification_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +11,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController textEditingController = TextEditingController();
+
+  NotificationService notificationService = NotificationService();
+
+  @override
+  void initState() {
+    notificationService.initialNotification();
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +54,16 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.blue,
                 onPressed: () {
                   debugPrint("Button Pressed");
+                  notificationService.sendNotification("Title", (){
+                    if (textEditingController.text.trim() == "") {
+                      return "No text written";
+                    } else {
+                      return textEditingController.text.trim();
+                    }
+                  }());
                 },
                 child: const Text(
-                  "Press here",
+                  "Send",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
