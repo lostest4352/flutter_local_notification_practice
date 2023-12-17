@@ -4,7 +4,7 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
-  //
+  // TODO change to ic launcher to show app's icon
   final AndroidInitializationSettings androidInitializationSettings =
       const AndroidInitializationSettings('logo');
 
